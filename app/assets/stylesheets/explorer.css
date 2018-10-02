@@ -2,4 +2,5 @@
  * Explorer Stylesheet Manifest File
  *
  *= require bootstrap
+ *= require explorer/layout
  */

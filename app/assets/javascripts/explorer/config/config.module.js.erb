@@ -1,0 +1,13 @@
+(function() {
+  "use strict";
+
+  angular
+    .module("explorer.config", [])
+    .constant("explorer.config.APP_CONFIG", {
+      server_url: "<%= ENV['RAILS_API_URL'] %>",
+
+      main_page_html: "<%= asset_path('explorer/pages/main.html') %>",
+      navbar_html: "<%= asset_path('explorer/layout/navbar/navbar.html') %>"
+    });
+
+})();
