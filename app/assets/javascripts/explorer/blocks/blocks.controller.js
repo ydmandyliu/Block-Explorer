@@ -4,79 +4,49 @@
   angular
     .module("explorer.blocks")
     .controller("explorer.blocks.BlocksController", BlocksController);
-
-  BlocksController.$inject = ["explorer.blocks.Block"];
-
-  function BlocksController(block) {
+  
+  BlocksController.$inject = ["$scope"];
+  function BlocksController($scope) {
       var vm = this;
-      vm.blocks;
-      vm.block;
-      vm.edit   = edit;
-      vm.create = create;
-      vm.update = update;
-      vm.remove = remove;      
+      vm.blocks = [];
+      vm.getTime = getTime;
+      vm.getDifficulty = getDifficulty;
+      vm.getHash = getHash;
+      vm.getMiner = getMiner;
 
-      activate();
-      return;
-      ////////////////
-      function activate() {
-        newBlock();
-        vm.blocks = Block.query();
+      updateBlocks();
+
+      var filter = web3.eth.filter("latest");
+	  filter.watch(function(error, result) {
+	  	if(!error) {
+	  		console.log(result);
+	    	updateBlocks();
+	    	$scope.$apply();
+	    }
+	  });
+
+      function updateBlocks() {
+      	var current = web3.eth.blockNumber;
+      	for(var i = 0; i < 10 && current - i >= 0; i++) {
+      		vm.blocks.push(web3.eth.getBlock(current - i));
+      	}
       }
 
-      function newBlock() {
-        vm.block = new Block();
-      }
-      function handleError(response) {
-        console.log(response);
-      } 
-      function edit(object) {
-        console.log("selected", object);
-        vm.block = object;        
+      function getTime(timestamp) {
+      	var date = new Date();
+      	return Math.floor(date.getTime() / 1000) - timestamp;
       }
 
-      function create() {
-        //console.log("creating block", vm.block);
-        vm.block.$save()
-          .then(function(response){
-            //console.log(response);
-            vm.blocks.push(vm.block);
-            newBlock();
-          })
-          .catch(handleError);        
+      function getDifficulty(diff) {
+      	return new BigNumber(diff).div(1000000000000).toFormat(3);
       }
 
-      function update() {
-        //console.log("update", vm.block);
-        vm.block.$update()
-          .then(function(response){
-            //console.log(response);
-        })
-        .catch(handleError);        
+      function getHash(hash) {
+      	return hash.substring(0, 20) + "...";
       }
 
-      function remove() {
-        //console.log("remove", vm.block);
-        vm.block.$delete()
-          .then(function(response){
-            //console.log(response);
-            //remove the element from local array
-            removeElement(vm.blocks, vm.block);
-            //vm.blocks = block.query();
-            //replace edit area with prototype instance
-            newBlock();
-          })
-          .catch(handleError);                
+      function getMiner(miner) {
+      	return miner.substring(0, 30) + "...";
       }
-
-
-      function removeElement(elements, element) {
-        for (var i=0; i<elements.length; i++) {
-          if (elements[i].id == element.id) {
-            elements.splice(i,1);
-            break;
-          }        
-        }        
-      }      
   }
 })();

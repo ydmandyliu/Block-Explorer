@@ -1,3 +1,44 @@
-<div>
-	<h5>blocks</h5>
+<div class="col-md-6 col-sm-6 col-xs-12" id="block-tile">
+  <div class="panel">
+  	<table class="table table-bordered table-striped table-hover">
+	  <thead>
+	    <tr>
+	      <th><i class="fa fa-cubes" style="font-size:20px"></i> Blocks</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+        <tr ng-repeat="block in blocksVM.blocks">
+        	<td>
+        		<div style="clear: both">
+        			<span class="title">Block {{ block.number }}</span> 
+        			<span class="floatright">
+        				<span class="time">{{ blocksVM.getTime(block.timestamp) }}</span> secs ago
+        			</span></div>
+        		<ul>
+        			<li>Hash: <span class="value">{{ blocksVM.getHash(block.hash) }}</span></li>
+        			<li>Block size: <span class="value">{{ block.size }} B</span></li>
+        			<li><span class="value">{{ blocksVM.getDifficulty(block.difficulty) }} T</span> difficulty and
+        				<span class="value">{{ block.gasUsed }} m/s</span> gas used</li>
+        			</li>
+        			<li>Includes <span class="value">{{ block.transactions.length }}</span> transactions
+        			<li>Mined by <span class="value">{{ blocksVM.getMiner(block.miner) }}</span></li>
+        		</ul>
+        	</td>
+        </tr>
+<!--         <tr>
+        	<td>
+        		<span>Block dj2dd293jr29j28d23jd92d2j29dj8 in 10 secs ago</span>
+        		<ul>
+        			<li>hash: sdfsjfknkjn23nf92f9cejceccj2e02ikx</li>
+        			<li>size: 2522834823742974895275</li>
+        			<li>difficulty: 234273984723429374829343927</li>
+        			<li># of txs: 4234235253424</li>
+        			<li>Gas used: 43242354635234243543453</li>
+        			<li>miner: 0xdfjshf238hf29djuen2ene</li>
+        		</ul>
+        	</td>
+        </tr> -->
+	  </tbody>
+    </table>	
+  </div>
 </div>
