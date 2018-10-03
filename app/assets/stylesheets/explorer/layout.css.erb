@@ -1,0 +1,146 @@
+/* 
+ * layout.css
+ */
+
+body {
+  background-image: url(<%= asset_path 'eth.jpg' %>);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #444444;
+  color: #dddddd;
+  font-family: 'Ubuntu';
+}
+
+.fullsize {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+/*********** tables *************/
+
+#info-tile, #block-tile, #transaction-tile {
+  padding: 0;
+  margin-bottom: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+#info-tile:hover, .table:hover {
+  box-shadow: 0 1px 3px 1px #333333;
+}
+
+#block-tile, #transaction-tile {
+  overflow-y: auto;
+  padding: 15px;
+}
+
+#info-tile {
+  width: 100%;
+}
+
+.panel {
+  background-color: #302C29;
+}
+
+.table {
+  margin-bottom: 0px;
+}
+
+table.table-bordered > thead > tr > th {
+  border: 1px solid #3D3937;
+  text-align: center;
+  color: #B55A26;
+  font-size: 18px;
+}
+
+table.table-bordered > tbody > tr > td {
+  border: 1px solid #3D3937;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td, 
+.table-striped > tbody > tr:nth-child(odd) >th {
+   background-color: #423D3A;
+ }
+
+.table-striped > tbody > tr > td:hover, 
+.table-striped > tbody > tr > td:hover {
+  background-color: #666666;
+}
+
+table > thead > tr > th {
+  background-color: #1C1918;
+}
+
+.material-icons, .fa, .glyphicon {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+
+/*******************************/
+
+
+/*********** navbar *************/
+
+.navbar {
+  background-color: #3D281D;
+  border-color: #3D281D;
+}
+
+.navbar-default .navbar-brand {
+  font-size: 30px;
+  color: #777777;
+  font-family: 'Lobster';
+  height: 65px;
+  padding: 20px;
+}
+
+.nav li form {
+  padding-left: 10px; /* adds spacing along left of dropdown menu form */
+  padding-right: 10px;
+}
+
+/* get the two origin forms to be side-by-side */
+span.search-criteria form {
+  display: inline;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/* re-position the fields after we applied the display inline */
+span.search-criteria form input {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+/* right-size the distance field */
+span.search-criteria form input[name='distance-limit'] {
+  width: 75px;
+}
+
+/********************************/
+
+[readonly='readonly'] {
+  background-color: inherit;
+}
+
+button:disabled {
+    color:#717782;
+}
+
+img.image-preview {
+  display: inline-block;
+  width: 300px;
+  height: 200px;
+  margin: 10px;
+}
+
+.crop-area {
+  position: relative;
+  display:block;
+  width:300px;
+  height:350px;
+  margin: 10px;
+  overflow: visible;
+}
+
