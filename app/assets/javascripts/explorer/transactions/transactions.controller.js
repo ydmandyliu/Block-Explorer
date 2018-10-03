@@ -5,78 +5,52 @@
     .module("explorer.transactions")
     .controller("explorer.transactions.TransactionsController", TransactionsController);
 
-  TransactionsController.$inject = ["explorer.transactions.Transaction"];
+  TransactionsController.$inject = ["$scope"];
+  function TransactionsController($scope) {
+    var vm = this;
+    vm.txns = []; // transaction hashes
+    vm.getHash = getHash;
+    vm.getTime = getTime;
+    vm.getAddress = getAddress;
+    vm.getAmount = getAmount;
 
-  function TransactionsController(transaction) {
-      var vm = this;
-      vm.transactions;
-      vm.transaction;
-      vm.edit   = edit;
-      vm.create = create;
-      vm.update = update;
-      vm.remove = remove;      
+    updateTransactions();
 
-      activate();
-      return;
-      ////////////////
-      function activate() {
-        newtransaction();
-        vm.transactions = Transaction.query();
-      }
+    var filter = web3.eth.filter("latest");
+    filter.watch(function(error, result) {
+    	if(!error) {
+    		console.log(result);
+    		updateTransactions();
+    		$scope.$apply();
+    	}
+    });
 
-      function newTransaction() {
-        vm.transaction = new Transaction();
-      }
-      function handleError(response) {
-        console.log(response);
-      } 
-      function edit(object) {
-        console.log("selected", object);
-        vm.transaction = object;        
-      }
+    function updateTransactions() {
+		var current = web3.eth.blockNumber;
+      	for(var i = 0; i < 10 && current - i >= 0; i++) {
+      		var tx = web3.eth.getBlock(current).transactions;
+      		vm.txns.push(tx[tx.length - 1]);
+      	}
+    }
 
-      function create() {
-        //console.log("creating transaction", vm.transaction);
-        vm.transaction.$save()
-          .then(function(response){
-            //console.log(response);
-            vm.transactions.push(vm.transaction);
-            newTransaction();
-          })
-          .catch(handleError);        
-      }
+    function getHash(hash) {
+    	return hash == undefined ? "undefined" : hash.substring(0, 30) + "...";
+    }
 
-      function update() {
-        //console.log("update", vm.transaction);
-        vm.transaction.$update()
-          .then(function(response){
-            //console.log(response);
-        })
-        .catch(handleError);        
-      }
+    function getTime(hash) {
+    	if(hash == undefined) return 0;
+    	var blocknum = web3.eth.getTransaction(hash).blockNumber;
+    	var block = web3.eth.getBlock(blocknum);
+    	var date = new Date();
+      	return Math.floor(date.getTime() / 1000) - block.timestamp;
+    }
 
-      function remove() {
-        //console.log("remove", vm.transaction);
-        vm.transaction.$delete()
-          .then(function(response){
-            //console.log(response);
-            //remove the element from local array
-            removeElement(vm.transactions, vm.transaction);
-            //vm.transactions = transaction.query();
-            //replace edit area with prototype instance
-            newTransaction();
-          })
-          .catch(handleError);                
-      }
+    function getAddress(address) {
+    	return address == undefined ? "undefined" : address.substring(0, 30) + "...";
+    }
 
-
-      function removeElement(elements, element) {
-        for (var i=0; i<elements.length; i++) {
-          if (elements[i].id == element.id) {
-            elements.splice(i,1);
-            break;
-          }        
-        }        
-      }      
+    function getAmount(value) {
+    	return value == undefined ? 0 : new BigNumber(value).div(1000000000000000000).toFormat(3);
+    }
   }
 })();

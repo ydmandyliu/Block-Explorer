@@ -1,3 +1,32 @@
-<div>
-	<h5>transactions</h5>
+<div class="col-md-6 col-sm-6 col-xs-12" id="transaction-tile">
+  <div class="panel">
+	<table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <th><i class="glyphicon glyphicon-list-alt" style="font-size:20px"></i> Transactions</th>
+		</tr>
+	  </thead>
+	  <tbody>
+	    <tr ng-repeat="txn in transactionsVM.txns">
+        	<td>
+        		<div style="clear: both">
+        			<span class="title">Transaction {{ transactionsVM.getHash(txn.hash) }}</span> 
+        			<span class="floatright">
+        				<span class="time">{{ transactionsVM.getTime(txn) }}</span> secs ago
+        		    </span></div>
+        		<ul>
+        			<li>From block:<span class="value"> {{ txn.blockNumber }}</span></li>
+        			<li>
+        				<span class="value">{{ transactionsVM.getAddress(txn.from) }} </span>
+        				<span class="glyphicon glyphicon-chevron-right"></span>
+        				<span class="value"> {{ transactionsVM.getAddress(txn.to) }}</span>
+        				</span>
+        			</li>
+        			<li><span class="value">{{ transactionsVM.getAmount(txn.value) }} ETH</span> transferred</li>
+        		</ul>
+        	</td>
+        </tr>
+	  </tbody>
+	</table>
+  </div>
 </div>
