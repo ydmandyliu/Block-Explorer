@@ -17,6 +17,15 @@
 
       return response;
     }
+
+    service.getPrice = function () {
+      var response = $http({
+        method: "GET",
+        url: "https://api.coinmarketcap.com/v1/ticker/ethereum/"
+      });
+
+      return response;
+    }
   }
 
   //nests the default payload below a "stat" element 

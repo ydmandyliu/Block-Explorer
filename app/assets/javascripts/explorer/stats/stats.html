@@ -5,7 +5,7 @@
     			<th><i class="fa fa-cube" style="font-size:20px"></i> Current Block</th>
     			<th><i class="material-icons" style="font-size:20px">local_gas_station</i> Gas Limit</th>
     			<th><i class="fa fa-clock-o" style="font-size:20px"></i> Block Time</th>
-    			<th><i class="fa fa-exclamation-circle" style="font-size:20px"></i> Current Diff</th>
+    			<th><i class="fa fa-exclamation-circle" style="font-size:20px"></i> Difficulty</th>
     			<th><i class="fa fa-calculator" style="font-size:20px"></i> Hashrate</th>
     			<th><i class="material-icons" style="font-size:20px">monetization_on</i> ETH/USD</th>
     		</tr>
@@ -13,11 +13,11 @@
     	<tbody>
     		<tr>
     			<td>{{ blockNumber }}</td>
-    			<td>{{ gasLimit }} m/s</td>
-    			<td>{{ blockTime }} s</td>
-    			<td>{{ difficulty }} T</td>
-    			<td>{{ hashrate }} TH/s</td>
-    			<td>$ {{ ethPrice }}</td>
+    			<td>{{ gasLimit }} <span>m/s</span></td>
+    			<td>{{ blockTime }} <span>s</span></td>
+    			<td>{{ difficulty }} <span>TH</span></td>
+    			<td>{{ hashrate }} <span>TH/s</span></td>
+    			<td><span>$</span> {{ ethPrice }}</td>
     		</tr>
     	</tbody>
     </table>
