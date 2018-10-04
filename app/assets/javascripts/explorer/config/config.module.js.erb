@@ -7,7 +7,16 @@
       server_url: "<%= ENV['RAILS_API_URL'] %>",
 
       main_page_html: "<%= asset_path('explorer/pages/main.html') %>",
-      navbar_html: "<%= asset_path('explorer/layout/navbar/navbar.html') %>"
+      navbar_html: "<%= asset_path('explorer/layout/navbar/navbar.html') %>",
+      blocks_page_html: "<%= asset_path('explorer/pages/blocks_page.html') %>",
+      transactions_page_html: "<%= asset_path('explorer/pages/transactions_page.html') %>",
+
+      block_viewer_html: "<%= asset_path('explorer/layout/block_viewer/block_viewer.html') %>",
+      transaction_viewer_html: "<%= asset_path('explorer/layout/transaction_viewer/transaction_viewer.html') %>",
+
+      blocks_html: "<%= asset_path('explorer/blocks/blocks.html') %>",
+      transactions_html: "<%= asset_path('explorer/transactions/transactions.html') %>",
+      stats_html: "<%= asset_path('explorer/stats/stats.html') %>"
     });
 
 })();
