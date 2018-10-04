@@ -24,7 +24,7 @@
 
     function updateStats() {
       $scope.blockNumber = web3.eth.blockNumber;
-      if($scope.blockNumber == undefined) console.log("no blockNumber");
+      if($scope.blockNumber == undefined) console.log("no block number");
       else {
         var latest = web3.eth.getBlock($scope.blockNumber);
         $scope.gasLimit = new BigNumber(latest.gasLimit).toFormat(3);

@@ -2,7 +2,5 @@
   "use strict";
 
   angular
-    .module("explorer.transactions", [
-      "ngResource"
-    ]);
+    .module("explorer.transactions", []);
 })();

@@ -18,7 +18,7 @@
         			<li>Hash: <span class="value">{{ blocksVM.getHash(block.hash) }}</span></li>
         			<li>Block size: <span class="value">{{ block.size }} B</span></li>
         			<li><span class="value">{{ blocksVM.getDifficulty(block.difficulty) }} T</span> difficulty and
-        				<span class="value">{{ block.gasUsed }} m/s</span> gas used</li>
+        				<span class="value">{{ blocksVM.getGas(block.gasUsed) }} m/s</span> gas used</li>
         			</li>
         			<li>Includes <span class="value">{{ block.transactions.length }}</span> transactions
         			<li>Mined by <span class="value">{{ blocksVM.getMiner(block.miner) }}</span></li>

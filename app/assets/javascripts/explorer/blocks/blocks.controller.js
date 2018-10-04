@@ -13,6 +13,7 @@
       vm.getDifficulty = getDifficulty;
       vm.getHash = getHash;
       vm.getMiner = getMiner;
+      vm.getGas = getGas;
 
       updateBlocks();
 
@@ -44,11 +45,15 @@
       }
 
       function getHash(hash) {
-      	return hash.substring(0, 20) + "...";
+      	return hash.substring(0, 30) + "...";
       }
 
       function getMiner(miner) {
       	return miner.substring(0, 30) + "...";
+      }
+
+      function getGas(gas) {
+        return new BigNumber(gas).toFormat(1);
       }
   }
 })();

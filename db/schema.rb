@@ -11,28 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181002024732) do
+ActiveRecord::Schema.define(version: 20181004024548) do
 
   create_table "blocks", force: :cascade do |t|
     t.integer  "number"
-    t.string   "hash"
-    t.integer  "difficulty"
-    t.string   "address"
-    t.integer  "size"
     t.string   "timestamp"
     t.integer  "transactions"
-    t.integer  "gas"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "hash"
+    t.string   "parentHash"
+    t.string   "miner"
+    t.integer  "difficulty"
+    t.integer  "totalDifficulty"
+    t.integer  "size"
+    t.integer  "gasUsed"
+    t.integer  "gasLimit"
+    t.string   "nonce"
+    t.integer  "blockReward"
+    t.integer  "uncleReward"
+    t.string   "extraData"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.integer  "number"
-    t.string   "hash"
-    t.string   "fromAddress"
-    t.string   "toAddress"
-    t.integer  "amount"
+    t.integer  "blockNumber"
     t.string   "timestamp"
+    t.string   "hash"
+    t.string   "from"
+    t.string   "to"
+    t.integer  "value"
+    t.integer  "fee"
+    t.integer  "gasLimit"
+    t.integer  "gasUsed"
+    t.integer  "gasPrice"
+    t.string   "nonce"
+    t.string   "input"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

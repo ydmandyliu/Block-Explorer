@@ -34,7 +34,7 @@
     }
 
     function getHash(hash) {
-    	return hash == undefined ? "undefined" : hash.substring(0, 30) + "...";
+    	return hash == undefined ? "undefined" : hash.substring(0, 20) + "...";
     }
 
     function getTime(hash) {
@@ -46,7 +46,7 @@
     }
 
     function getAddress(address) {
-    	return address == undefined ? "undefined" : address.substring(0, 30) + "...";
+    	return address == undefined ? "undefined" : address.substring(0, 20) + "...";
     }
 
     function getAmount(value) {
