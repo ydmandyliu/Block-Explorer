@@ -1,4 +1,5 @@
 # Block Explorer for Ethereum
+This project is a block explorer made for Ethereum based on Ruby on Rails and AngularJS.
 
 ## Environment Setup (Mac)
 First make sure you have installed `Homebrew`.
@@ -40,7 +41,4 @@ rails s
 geth --rpc --rpcaddr localhost --rpcport 8545 --rpcapi "web3,eth" --rpccorsdomain "http://localhost:3000"
 ```
 Then open the browser and visit `localhost:3000` to see the webpage.
-Note that it might take hours to sync the blockchain if it is your first time syncing.
-
-## Overview
-
+Note that it might take hours to sync the blockchain if it is your first time syncing. 
