@@ -16,14 +16,16 @@
 
       updateBlocks();
 
+      console.log(web3.eth.blockNumber);
+
       var filter = web3.eth.filter("latest");
-	  filter.watch(function(error, result) {
-	  	if(!error) {
-	  		console.log(result);
-	    	updateBlocks();
-	    	$scope.$apply();
-	    }
-	  });
+  	  filter.watch(function(error, result) {
+  	  	if(!error) {
+  	  		console.log(result);
+  	    	updateBlocks();
+  	    	$scope.$apply();
+  	    }
+  	  });
 
       function updateBlocks() {
       	var current = web3.eth.blockNumber;
