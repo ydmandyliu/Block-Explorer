@@ -5,6 +5,10 @@
     .module("explorer", [
       "ui.router",
       "explorer.config",
-      "explorer.layout"
+      "explorer.layout",
+      "explorer.subjects",
+      "explorer.blocks",
+      "explorer.transactions",
+      "explorer.stats"
     ]);
 })();
