@@ -16,30 +16,45 @@ body {
   padding-left: 0px;
 }
 
+/*td > span, td > ul > li {
+  font-family: 'Nanum Gothic', sans-serif;
+}
+*/
+
 /*********** tables *************/
 
 #info-tile, #block-tile, #transaction-tile {
-  padding: 0;
-  margin-bottom: 15px;
+  padding: 0px;
+  margin-bottom: 5px;
   position: relative;
   overflow: hidden;
 }
 
 #info-tile:hover, .table:hover {
-  box-shadow: 0 1px 3px 1px #333333;
+  box-shadow: 0 1px 5px 1px #333333;
 }
 
 #block-tile, #transaction-tile {
   overflow-y: auto;
   padding: 15px;
+  padding-bottom: 0px;
 }
 
 #info-tile {
   width: 100%;
 }
 
+#info-tile > table > tbody > tr > td {
+  font-size: 18px;
+}
+
+#info-tile > table > tbody > tr > td > span {
+  color: #897F7A;
+}
+
 .panel {
   background-color: #302C29;
+  margin-bottom: 0px;
 }
 
 .table {
@@ -64,7 +79,7 @@ table.table-bordered > tbody > tr > td {
 
 .table-striped > tbody > tr > td:hover, 
 .table-striped > tbody > tr > td:hover {
-  background-color: #666666;
+  background-color: #4E4945;
 }
 
 table > thead > tr > th {
@@ -76,6 +91,50 @@ table > thead > tr > th {
   vertical-align: middle;
 }
 
+td > ul > li, td > div {
+  line-height: 20px;
+  color: #807269;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+ul > li > span, td > div > span {
+  border-radius: 10px;
+  color: #dddddd;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 11px;
+}
+
+td > div {
+  margin-bottom: 5px;
+  color: black;
+}
+
+#blocknum, .title {
+  background-color: #AE663A;
+  border: 2px solid #AE663A;
+  color: #3D2A1D;
+  font-family: 'Ubuntu';
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.value {
+  background-color: #897F7A;
+  border: 2px solid #897F7A;
+}
+
+.floatright {
+  float: right;
+  font-size: 15px;
+  border: none;
+  font-family: 'Nanum Gothic', sans-serif;
+  color: #888888;
+  font-style: italic;
+  padding-right: 5px;
+}
 
 /*******************************/
 
@@ -88,7 +147,7 @@ table > thead > tr > th {
 }
 
 .navbar-default .navbar-brand {
-  font-size: 30px;
+  font-size: 35px;
   color: #777777;
   font-family: 'Lobster';
   height: 65px;
@@ -116,6 +175,17 @@ span.search-criteria form input {
 /* right-size the distance field */
 span.search-criteria form input[name='distance-limit'] {
   width: 75px;
+}
+
+.navbar-header > a > span {
+  font-size: 15px;
+  font-family: 'Ubuntu', sans-serif;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  height: 65px;
+  text-align: center;
+  font-style: italic;
 }
 
 /********************************/
